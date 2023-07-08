@@ -18,7 +18,6 @@
 		924CBE652A5991E400D0B021 /* BeerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CBE642A5991E400D0B021 /* BeerRow.swift */; };
 		924CBE682A5992A300D0B021 /* BeerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CBE672A5992A300D0B021 /* BeerImage.swift */; };
 		924CBE6B2A59943100D0B021 /* BeerDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CBE6A2A59943100D0B021 /* BeerDescriptionView.swift */; };
-		924CBE6D2A59A08C00D0B021 /* BeerSuggestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CBE6C2A59A08C00D0B021 /* BeerSuggestionList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +33,6 @@
 		924CBE642A5991E400D0B021 /* BeerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerRow.swift; sourceTree = "<group>"; };
 		924CBE672A5992A300D0B021 /* BeerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerImage.swift; sourceTree = "<group>"; };
 		924CBE6A2A59943100D0B021 /* BeerDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDescriptionView.swift; sourceTree = "<group>"; };
-		924CBE6C2A59A08C00D0B021 /* BeerSuggestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerSuggestionList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				924CBE642A5991E400D0B021 /* BeerRow.swift */,
-				924CBE6C2A59A08C00D0B021 /* BeerSuggestionList.swift */,
 				924CBE692A59941600D0B021 /* BeerRow Components */,
 			);
 			path = "BeerListView Components";
@@ -216,7 +213,6 @@
 				924CBE4D2A596DB400D0B021 /* BeerListView.swift in Sources */,
 				924CBE652A5991E400D0B021 /* BeerRow.swift in Sources */,
 				924CBE5C2A59843C00D0B021 /* Beer.swift in Sources */,
-				924CBE6D2A59A08C00D0B021 /* BeerSuggestionList.swift in Sources */,
 				924CBE4B2A596DB400D0B021 /* BeerApp.swift in Sources */,
 				924CBE6B2A59943100D0B021 /* BeerDescriptionView.swift in Sources */,
 			);

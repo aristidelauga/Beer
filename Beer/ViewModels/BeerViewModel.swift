@@ -12,9 +12,18 @@ final class BeerViewModel: ObservableObject {
   @Published var beers: [Beer] = []
   @Published var favoriteBeers: [Beer] = []
   @Published var isLoading = false
+  @Published var searchText = ""
   private var page = 2
   private var beerAPI = BeerAPI()
   
+  var filteredBeers: [Beer] {
+    if searchText.isEmpty {
+      return beers
+    } else {
+      return beers.filter { $0.name.localizedCaseInsensitiveContains(searchText)}
+    }
+  }
+
   init() {
     Task { [weak self] in
       try await self?.fetchBeers()

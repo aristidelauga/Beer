@@ -9,7 +9,6 @@ import SwiftUI
 
 struct BeerListView: View {
   @StateObject var beerVM = BeerViewModel()
-  @State private var searchText = ""
   @Environment(\.isSearching)
   private var isSearching: Bool
   var body: some View {
@@ -17,7 +16,7 @@ struct BeerListView: View {
       ScrollViewReader { proxy in
         ScrollView(.vertical,showsIndicators: false) {
           LazyVStack(alignment: .leading) {
-            ForEach(beerVM.beers) { beer in
+            ForEach(beerVM.filteredBeers) { beer in
               BeerRow(beer: beer)
                 .onAppear {
                   if beer == beerVM.beers.last ?? beer {
@@ -25,7 +24,7 @@ struct BeerListView: View {
                       do {
                         try await beerVM.fetchMoreBeers()
                       } catch {
-                        FetchingError.moreFetchingUnavailable
+                        throw FetchingError.moreFetchingUnavailable
                       }
                     }
                   }
@@ -41,14 +40,7 @@ struct BeerListView: View {
         }
       }
     }
-    .searchable(text: $searchText, prompt: "Search for a beer", suggestions: {
-      if !isSearching || !searchText.isEmpty {
-        BeerSuggestionList(beerVM: beerVM)
-      }
-    })
-    .onSubmit {
-      
-    }
+    .searchable(text: $beerVM.searchText, prompt: "Search for a beer")
   }
 }
 
