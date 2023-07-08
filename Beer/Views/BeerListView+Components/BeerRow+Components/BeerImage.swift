@@ -9,13 +9,15 @@ import SwiftUI
 
 struct BeerImage: View {
   var beer: Beer
+  var width: CGFloat
+  var height: CGFloat
   var body: some View {
-    if let url = beer.image_url {
+    if let url = beer.imageUrl {
       AsyncImage(url: URL(string: url)) { image in
         image
           .resizable()
           .scaledToFit()
-          .frame(maxWidth: 80, maxHeight: 80, alignment: .center)
+          .frame(maxWidth: width, maxHeight: height, alignment: .center)
       } placeholder: {
         ProgressView()
       }
@@ -27,6 +29,6 @@ struct BeerImage: View {
 
 struct BeerImage_Previews: PreviewProvider {
   static var previews: some View {
-    BeerImage(beer: Beer.sample)
+    BeerImage(beer: Beer.sample, width: 80, height: 80)
   }
 }

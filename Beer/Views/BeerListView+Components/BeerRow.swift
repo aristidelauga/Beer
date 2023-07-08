@@ -11,7 +11,7 @@ struct BeerRow: View {
   var beer: Beer
   var body: some View {
     HStack(alignment: .top, spacing: 5) {
-      BeerImage(beer: beer)
+      BeerImage(beer: beer, width: 80, height: 80)
       BeerDescriptionView(beer: beer)
     }
   }

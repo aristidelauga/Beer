@@ -33,17 +33,19 @@ struct BeerAPI {
   
   func fetchMoreBeers(page: Int) async throws -> [Beer] {
     let additionalBeers = Task { () -> [Beer] in
-      guard let url = URL(string: "https://api.punkapi.com/v2/beers?page=\(page + 1)&per_page=25") else {
+      guard let url = URL(string: "https://api.punkapi.com/v2/beers?page=\(page + 1)&per_page=5") else {
         throw FetchingError.badURL
       }
       
       let (data, response) = try await URLSession.shared.data(from: url)
       
       guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+        print("Failed to get HTTP response: \(response)")
         throw FetchingError.noResponse
       }
       
       guard let decodedResponse = try? JSONDecoder().decode([Beer].self, from: data) else {
+        print("Issue decoding the data")
         throw FetchingError.decodingIssue
       }
       

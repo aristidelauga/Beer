@@ -16,21 +16,22 @@ struct BeerListView: View {
       ScrollViewReader { proxy in
         ScrollView(.vertical,showsIndicators: false) {
           LazyVStack(alignment: .leading) {
-            ForEach(beerVM.filteredBeers) { beer in
-              BeerRow(beer: beer)
-                .onAppear {
-                  if beer == beerVM.beers.last ?? beer {
-                    Task {
-                      do {
-                        try await beerVM.fetchMoreBeers()
-                      } catch {
-                        throw FetchingError.moreFetchingUnavailable
+            ForEach(beerVM.filteredBeers, id: \.id) { beer in
+              NavigationLink(value: beer) {
+                BeerRow(beer: beer)
+                  .onAppear {
+                    if beer == beerVM.beers.last ?? beer {
+                      Task {
+                        do {
+                          try await beerVM.fetchMoreBeers()
+                        } catch {
+                          throw FetchingError.moreFetchingUnavailable
+                        }
                       }
                     }
                   }
-                }
+              }
             }
-            
             if beerVM.isLoading {
               ProgressView()
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -39,8 +40,12 @@ struct BeerListView: View {
           .padding()
         }
       }
+      .navigationDestination(for: Beer.self) { beer in
+        BeerDetailView(beer: beer)
+      }
     }
     .searchable(text: $beerVM.searchText, prompt: "Search for a beer")
+
   }
 }
 
