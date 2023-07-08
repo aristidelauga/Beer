@@ -11,4 +11,5 @@ enum FetchingError: Error {
   case badURL
   case noResponse
   case decodingIssue
+  case moreFetchingUnavailable
 }

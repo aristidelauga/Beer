@@ -28,6 +28,5 @@ struct BeerImage: View {
 struct BeerImage_Previews: PreviewProvider {
   static var previews: some View {
     BeerImage(beer: Beer.sample)
-      .preferredColorScheme(.dark)
   }
 }

@@ -7,18 +7,17 @@
 
 import Foundation
 
+@MainActor
 final class BeerViewModel: ObservableObject {
   @Published var beers: [Beer] = []
   @Published var favoriteBeers: [Beer] = []
   @Published var isLoading = false
-  private var page = 1
-  
+  private var page = 2
   private var beerAPI = BeerAPI()
   
   init() {
     Task { [weak self] in
-      await self?.fetchBeers()
-      
+      try await self?.fetchBeers()
     }
   }
   
@@ -30,7 +29,7 @@ final class BeerViewModel: ObservableObject {
     }
   }
   
-  func fetchBeers() async {
+  func fetchBeers() async throws {
     Task {
       do {
         self.beers = try await beerAPI.fetchBeers()
@@ -41,5 +40,17 @@ final class BeerViewModel: ObservableObject {
     }
   }
   
+  func fetchMoreBeers() async throws {
+    isLoading = true 
+    Task {
+      do {
+        self.beers += try await beerAPI.fetchMoreBeers(page: page)
+        self.formatTagline()
+        page += 1
+      } catch {
+        print(error.localizedDescription)
+      }
+    }
+  }
   
 }

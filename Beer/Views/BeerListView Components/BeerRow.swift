@@ -11,10 +11,8 @@ struct BeerRow: View {
   var beer: Beer
   var body: some View {
     HStack(alignment: .top, spacing: 5) {
-//      Spacer()
       BeerImage(beer: beer)
       BeerDescriptionView(beer: beer)
-//      Spacer()
     }
   }
 }
@@ -22,6 +20,5 @@ struct BeerRow: View {
 struct BeerRow_Previews: PreviewProvider {
   static var previews: some View {
     BeerRow(beer: Beer.sample)
-      .preferredColorScheme(.dark)
   }
 }
