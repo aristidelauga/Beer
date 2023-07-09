@@ -14,7 +14,7 @@ struct Beer: Identifiable, Decodable, Hashable {
   let description: String
   let imageUrl: String?
   let boilVolume: BoilVolume?
-  let ingredients: Ingredients?
+  let ingredients: Ingredients
   let foodPairing: [String]?
   
   
@@ -49,7 +49,6 @@ extension Beer {
                             Hop(name: "Simcoe", amount: BoilVolume(value: 31.3, unit: "grams"), add: "end", attribute: "flavour"),
                            ],
                             yeast: "Wyeast 1056 - American Ale™"),
-//                           ingredients: Ingredients(yeast: "Wyeast 1056 - American Ale™"),
                            foodPairing: ["Haggis bon bons","Rosemary and lemon roast chicken","Oatmeal and cranberry cookies"]
   )
   

@@ -11,14 +11,12 @@ struct IngredientsDetails: View {
   var beer: Beer
   var body: some View {
     VStack(alignment: .leading, spacing: 15) {
-//      Text("Ingredients")
-//        .font(.title3)
-//        .bold()
-      ForEach(beer.ingredients.malt ?? Beer.sample.ingredients?.malt, id: \.self) { malt in
-        HStack {
-          Text("- " + malt.name + ",  ")
-//          Text("\(malt.amount.value)")
-//          Text("\(malt.amount.unit)")
+      Text("Ingredients")
+        .font(.title3)
+        .bold()
+      ForEach(beer.ingredients.malt,  id: \.self) { malt in
+        if let maltName = malt.name, let maltValue = malt.amount?.value, let maltUnit = malt.amount?.unit {
+          Text("-  \(maltName), " + "\(maltValue) \(maltUnit)")
         }
       }
     }

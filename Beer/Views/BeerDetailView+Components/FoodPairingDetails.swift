@@ -10,13 +10,15 @@ import SwiftUI
 struct FoodPairingDetails: View {
   var beer: Beer
   var body: some View {
-    VStack(alignment: .leading, spacing: 15) {
-      Text("Food Pairing")
-        .font(.title3)
-        .bold()
-      ForEach(beer.foodPairing ?? [""], id: \.self) { food in
-        Text("- " + food)
-          .italic()
+    if let foodPairing = beer.foodPairing {
+      VStack(alignment: .leading, spacing: 15) {
+        Text("Food Pairing")
+          .font(.title3)
+          .bold()
+        ForEach(foodPairing, id: \.self) { food in
+          Text("-  " + food)
+            .italic()
+        }
       }
     }
   }

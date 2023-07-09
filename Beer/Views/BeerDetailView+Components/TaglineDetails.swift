@@ -11,11 +11,12 @@ struct TaglineDetails: View {
   var beer: Beer
   var body: some View {
     VStack(alignment: .leading, spacing: 15){
-      Text("Tagline")
+      Text("Tag line")
         .font(.title3)
         .bold()
       Text(beer.tagline)
         .foregroundColor(.secondary)
+        .italic()
     }
   }
 }

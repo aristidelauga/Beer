@@ -8,28 +8,45 @@
 import SwiftUI
 
 struct BeerDetailView: View {
+  @ObservedObject var beerVM: BeerViewModel
+  @Binding var path: NavigationPath
   var beer: Beer
   var body: some View {
     ScrollView(.vertical, showsIndicators: false) {
       VStack(alignment: .leading, spacing: 15) {
-        HStack {
-          Spacer()
-          BeerImage(beer: beer, width: 180, height: 180)
-          Spacer()
-        }
+        BeerBannerDetails(beer: beer)
         TaglineDetails(beer: beer)
         DescriptionDetails(beer: beer)
         IngredientsDetails(beer: beer)
         FoodPairingDetails(beer: beer)
+        NavigationLink(value: beerVM.randomBeer) {
+          Text("Switch to another random beer")
+            .frame(maxWidth: .infinity)
+            .foregroundColor(.blue)
+            .padding(.top)
+        }
+        Button {
+          path.removeLast(path.count)
+        } label: {
+          Text("Go back to home screen")
+            .frame(maxWidth: .infinity)
+            .foregroundColor(.blue)
+        }
       }
     }
     .navigationTitle(beer.name)
+    .navigationBarTitleDisplayMode(.inline)
     .padding(.horizontal, 10)
+    .navigationDestination(for: Beer.self) { _ in
+      BeerDetailView(beerVM: beerVM, path: $path, beer: beerVM.randomBeer)
+    }
   }
 }
 
 struct BeerDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    BeerDetailView(beer: Beer.sample)
+    BeerDetailView(beerVM: BeerViewModel(), path: .constant(NavigationPath()), beer: Beer.sample)
   }
 }
+
+

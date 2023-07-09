@@ -27,6 +27,7 @@
 		924CBE7F2A5A193600D0B021 /* DescriptionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CBE7E2A5A193600D0B021 /* DescriptionDetails.swift */; };
 		924CBE812A5A20B600D0B021 /* TaglineDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CBE802A5A20B600D0B021 /* TaglineDetails.swift */; };
 		924CBE832A5A239500D0B021 /* IngredientsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CBE822A5A239500D0B021 /* IngredientsDetails.swift */; };
+		926EB03C2A5AA2F200DC9745 /* BeerBannerDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926EB03B2A5AA2F200DC9745 /* BeerBannerDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		924CBE7E2A5A193600D0B021 /* DescriptionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionDetails.swift; sourceTree = "<group>"; };
 		924CBE802A5A20B600D0B021 /* TaglineDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaglineDetails.swift; sourceTree = "<group>"; };
 		924CBE822A5A239500D0B021 /* IngredientsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsDetails.swift; sourceTree = "<group>"; };
+		926EB03B2A5AA2F200DC9745 /* BeerBannerDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerBannerDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				924CBE7C2A5A18AC00D0B021 /* FoodPairingDetails.swift */,
+				926EB03B2A5AA2F200DC9745 /* BeerBannerDetails.swift */,
 				924CBE7E2A5A193600D0B021 /* DescriptionDetails.swift */,
 				924CBE802A5A20B600D0B021 /* TaglineDetails.swift */,
 				924CBE822A5A239500D0B021 /* IngredientsDetails.swift */,
@@ -246,6 +249,7 @@
 				924CBE5E2A59867B00D0B021 /* BeerViewModel.swift in Sources */,
 				924CBE7A2A5A14B700D0B021 /* Malt.swift in Sources */,
 				924CBE612A59876700D0B021 /* BeerAPI.swift in Sources */,
+				926EB03C2A5AA2F200DC9745 /* BeerBannerDetails.swift in Sources */,
 				924CBE762A5A148600D0B021 /* Ingredients.swift in Sources */,
 				924CBE682A5992A300D0B021 /* BeerImage.swift in Sources */,
 				924CBE4D2A596DB400D0B021 /* BeerListView.swift in Sources */,

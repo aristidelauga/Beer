@@ -9,43 +9,42 @@ import SwiftUI
 
 struct BeerListView: View {
   @StateObject var beerVM = BeerViewModel()
+  @State private var path = NavigationPath()
   @Environment(\.isSearching)
   private var isSearching: Bool
   var body: some View {
-    NavigationStack {
-      ScrollViewReader { proxy in
-        ScrollView(.vertical,showsIndicators: false) {
-          LazyVStack(alignment: .leading) {
-            ForEach(beerVM.filteredBeers, id: \.id) { beer in
-              NavigationLink(value: beer) {
-                BeerRow(beer: beer)
-                  .onAppear {
-                    if beer == beerVM.beers.last ?? beer {
-                      Task {
-                        do {
-                          try await beerVM.fetchMoreBeers()
-                        } catch {
-                          throw FetchingError.moreFetchingUnavailable
-                        }
+    NavigationStack(path: $path) {
+      ScrollView(.vertical,showsIndicators: false) {
+        LazyVStack(alignment: .leading) {
+          ForEach(beerVM.filteredBeers, id: \.id) { beer in
+            NavigationLink(value: beer) {
+              BeerRow(beer: beer)
+                .onAppear {
+                  if beer == beerVM.beers.last ?? beer {
+                    Task {
+                      do {
+                        try await beerVM.fetchMoreBeers()
+                      } catch {
+                        throw FetchingError.moreFetchingUnavailable
                       }
                     }
                   }
-              }
-            }
-            if beerVM.isLoading {
-              ProgressView()
-                .frame(maxWidth: .infinity, alignment: .center)
+                }
             }
           }
-          .padding()
+          if beerVM.isLoading {
+            ProgressView()
+              .frame(maxWidth: .infinity, alignment: .center)
+          }
         }
+        .padding()
       }
       .navigationDestination(for: Beer.self) { beer in
-        BeerDetailView(beer: beer)
+        BeerDetailView(beerVM: beerVM, path: $path, beer: beer)
       }
     }
     .searchable(text: $beerVM.searchText, prompt: "Search for a beer")
-
+    
   }
 }
 

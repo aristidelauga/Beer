@@ -8,7 +8,7 @@
 import Foundation
 
 struct Ingredients: Codable, Hashable {
-  let malt: [Malt]?
+  let malt: [Malt]
   let hops: [Hop]?
   let yeast: String?
 }

@@ -23,6 +23,14 @@ final class BeerViewModel: ObservableObject {
       return beers.filter { $0.name.localizedCaseInsensitiveContains(searchText)}
     }
   }
+  
+  var randomBeer: Beer {
+    var beer = Beer.sample
+    if let randomBeer = beers.randomElement() {
+      beer = randomBeer
+    }
+    return beer
+  }
 
   init() {
     Task { [weak self] in
