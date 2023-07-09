@@ -10,7 +10,6 @@ import Foundation
 @MainActor
 final class BeerViewModel: ObservableObject {
   @Published var beers: [Beer] = []
-  @Published var favoriteBeers: [Beer] = []
   @Published var isLoading = false
   @Published var searchText = ""
   private var page = 2
