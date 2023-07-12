@@ -10,6 +10,7 @@ import Foundation
 @MainActor
 final class BeerViewModel: ObservableObject {
   @Published var beers: [Beer] = []
+  @Published var favoriteBeers: [Beer]
   @Published var isLoading = false
   @Published var searchText = ""
   private var page = 2
@@ -30,8 +31,9 @@ final class BeerViewModel: ObservableObject {
     }
     return beer
   }
-
+  
   init() {
+    favoriteBeers = [Beer]()
     Task { [weak self] in
       try await self?.fetchBeers()
     }
@@ -69,4 +71,21 @@ final class BeerViewModel: ObservableObject {
     }
   }
   
+  func addToFavoriteBeers(_ beer: Beer) {
+    if !self.favoriteBeers.contains(beer) {
+      self.favoriteBeers.append(beer)
+    }
+  }
+  
+  func removeFromFavoriteBeers(_ beer: Beer) {
+    
+    guard self.favoriteBeers.isEmpty else {
+        return favoriteBeers = [Beer]()
+    }
+    
+    let index = self.favoriteBeers.firstIndex(of: beer) ?? 0
+    if self.favoriteBeers.contains(beer) {
+      self.favoriteBeers.remove(at: index)
+    }
+  }
 }

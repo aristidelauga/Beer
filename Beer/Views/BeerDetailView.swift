@@ -40,6 +40,21 @@ struct BeerDetailView: View {
     .navigationDestination(for: Beer.self) { _ in
       BeerDetailView(beerVM: beerVM, path: $path, beer: beerVM.randomBeer)
     }
+    .toolbar {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Button {
+          if !beerVM.favoriteBeers.contains(beer) {
+            beerVM.addToFavoriteBeers(beer)
+          } else {
+            beerVM.removeFromFavoriteBeers(beer)
+          }
+//          beerVM.addToFavoriteBeers(beer)
+        } label: {
+          Image(systemName: beerVM.favoriteBeers.contains(beer) ? "star.fill" : "star")
+            .foregroundColor(beerVM.favoriteBeers.contains(beer) ? Color.yellow : Color.black)
+        }
+      }
+    }
   }
 }
 

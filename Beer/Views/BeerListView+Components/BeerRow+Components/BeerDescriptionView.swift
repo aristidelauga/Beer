@@ -13,11 +13,13 @@ struct BeerDescriptionView: View {
     VStack(alignment: .leading, spacing: 10) {
       Text(beer.name)
         .font(.system(.title3, weight: .bold))
+        .foregroundColor(.black)
       Text(beer.tagline)
         .font(.system(.callout))
         .foregroundColor(.secondary)
       Text(beer.description)
         .lineLimit(2)
+        .foregroundColor(.black)
     }
   }
 }

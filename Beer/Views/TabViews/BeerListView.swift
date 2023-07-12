@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BeerListView: View {
-  @StateObject var beerVM = BeerViewModel()
+  @ObservedObject var beerVM: BeerViewModel
   @State private var path = NavigationPath()
   @Environment(\.isSearching)
   private var isSearching: Bool
@@ -50,6 +50,6 @@ struct BeerListView: View {
 
 struct BeerListView_Previews: PreviewProvider {
   static var previews: some View {
-    BeerListView()
+    BeerListView(beerVM: BeerViewModel())
   }
 }
